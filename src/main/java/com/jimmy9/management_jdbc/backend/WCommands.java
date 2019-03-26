@@ -1,8 +1,9 @@
 package com.jimmy9.management_jdbc.backend;
 
 import java.sql.*;
+import java.util.InputMismatchException;
 
- class WCommands {
+class WCommands {
 
     private static String dbName = "9jManagementJDBC";
     private static Connection connection;
@@ -59,7 +60,6 @@ import java.sql.*;
                     "\t\tprimary key (id)\n" +
                     ");");
             System.out.printf("Company with name \'%s\' successfully created.%n", company);
-            statement.close();
 
         } catch (SQLException e) {
             System.out.printf("Company with name \'%s\' already exists!%n", company);
@@ -153,7 +153,7 @@ import java.sql.*;
             statement.executeUpdate(cm);
 
         } catch (SQLException e) {
-            System.out.println("Can't change position of employee.");
+            System.out.println("Can\'t change position of employee. Try again.");
         }
     }
 
@@ -164,7 +164,7 @@ import java.sql.*;
             statement.executeUpdate(cm);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Can\'t change salary of employee. Try again.");
         }
     }
 }

@@ -12,38 +12,61 @@ import java.util.Scanner;
         wCommands.conn();
     }
 
+     private static String company, fname, sname, position;
+     private static int id;
+     private float salary;
+
+     private void checkStrField(String f){
+         String a = scanner.nextLine();
+         while (a.equals("") || a == null) {
+             System.out.println("Can\'t be empty. Try again");
+             System.out.print("-> ");
+             a = scanner.nextLine();
+         }
+         switch (f){
+             case "company" : company = a;   break;
+             case "fname"   : fname = a;     break;
+             case "sname"   : sname = a;     break;
+             case "position": position = a;  break;
+         }
+     }
+
     void createCompany(){
         System.out.print("Company\'s name: ");
-        String name = scanner.nextLine();
-        wCommands.createCompany(name);
+        checkStrField("company");
+        wCommands.createCompany(company);
     }
 
     void deleteCompany(){
         System.out.print("Company\'s name: ");
-        String name = scanner.nextLine();
-        wCommands.deleteCompany(name);
+        checkStrField("company");
+        wCommands.deleteCompany(company);
     }
 
     void addEmp(){
         System.out.print("Company\'s name: ");
-        String company = scanner.nextLine();
+        checkStrField("company");
         System.out.print("First name: ");
-        String fname = scanner.nextLine();
+        checkStrField("fname");
         System.out.print("Second name: ");
-        String sname = scanner.nextLine();
+        checkStrField("sname");
         System.out.print("Position: ");
-        String position = scanner.nextLine();
-        System.out.print("Age: ");
-        int age = scanner.nextInt();
-        System.out.print("Salary: ");
-        float salary = scanner.nextFloat();
+        checkStrField("position");
+        try {
+            System.out.print("Age: ");
+            int age = scanner.nextInt();
+            System.out.print("Salary: ");
+            salary = scanner.nextFloat();
 
-        wCommands.addEmployee(company, fname, sname, position, age, salary);
+            wCommands.addEmployee(company, fname, sname, position, age, salary);
+        } catch (InputMismatchException e){
+            System.out.println("Incorrect age or salary. Try again.");
+        }
     }
 
     void showAll(){
         System.out.print("Company\'s name: ");
-        String company = scanner.nextLine();
+        checkStrField("company");
         wCommands.showAll(company);
     }
 
@@ -51,39 +74,53 @@ import java.util.Scanner;
         wCommands.clist();
     }
 
-    void deleteW(){
-        try {
-            System.out.print("Company\'s name: ");
-            String company = scanner.nextLine();
-            System.out.print("Id of employee: ");
-            int id = scanner.nextInt();
+     void deleteW(){
+         try {
+             System.out.print("Company\'s name: ");
+             checkStrField("company");
+             try {
+                 System.out.print("Id of employee: ");
+                 id = scanner.nextInt();
 
-            wCommands.deleteW(company, id);
-        } catch (InputMismatchException | NullPointerException e){
-            System.out.println("Can\'t delete employee.");
-        }
-    }
+                 wCommands.deleteW(company, id);
+
+             } catch (InputMismatchException e){
+                 System.out.println("Incorrect id. Try again.");
+             }
+
+         } catch (InputMismatchException | NullPointerException e){
+             System.out.println("Can\'t delete employee.");
+         }
+     }
 
     void changeP(){
         System.out.print("Company\'s name: ");
-        String company = scanner.nextLine();
-        System.out.print("Id of employee: ");
-        int id = scanner.nextInt();
-        System.out.print("New position: ");
-        String position = scanner.nextLine();
+        checkStrField("company");
+        try {
+            System.out.print("Id of employee: ");
+            id = scanner.nextInt();
+            System.out.print("New position: ");
+            checkStrField("position");
 
-        wCommands.changeP(company, id, position);
+            wCommands.changeP(company, id, position);
+        } catch (InputMismatchException e){
+            System.out.println("Incorrect id. Try again.");
+        }
     }
 
     void changeS(){
         System.out.print("Company\'s name: ");
-        String company = scanner.nextLine();
-        System.out.print("Id of employee: ");
-        int id = scanner.nextInt();
-        System.out.print("New salary: ");
-        float salary = scanner.nextFloat();
+        checkStrField("company");
+        try {
+            System.out.print("Id of employee: ");
+            id = scanner.nextInt();
+            System.out.print("New salary: ");
+            salary = scanner.nextFloat();
 
-        wCommands.changeS(company, id, salary);
+            wCommands.changeS(company, id, salary);
+        } catch (InputMismatchException e){
+            System.out.println("Incorrect id or salary. Try again.");
+        }
     }
 
     void info(){
@@ -102,18 +139,18 @@ import java.util.Scanner;
     }
 
     void help(){
-        System.out.println("********************************************************");
-        System.out.println("List of commands");
-        System.out.println("********************************************************");
-        System.out.println("1) nc - create new company");
-        System.out.println("2) dc - delete company");
-        System.out.println("3) addE - add new employee");
-        System.out.println("4) showAll - show list of employees in selected company");
-        System.out.println("5) clist - show list of companies");
-        System.out.println("6) dw - delete selected employee");
-        System.out.println("7) changeP - change position to selected employee");
-        System.out.println("8) changeS - change salary to selected employee");
-        System.out.println("9) exit - exit");
-        System.out.println("********************************************************");
+        System.out.println("********************************************************\n" +
+        "List of commands\n"                                                            +
+        "********************************************************\n"                    +
+        "1) nc - create new company\n"                                                  +
+        "2) dc - delete company\n"                                                      +
+        "3) addE - add new employee\n"                                                  +
+        "4) showAll - show list of employees in selected company\n"                     +
+        "5) clist - show list of companies\n"                                           +
+        "6) dw - delete selected employee\n"                                            +
+        "7) changeP - change position to selected employee\n"                           +
+        "8) changeS - change salary to selected employee\n"                             +
+        "9) exit - exit\n"                                                              +
+        "********************************************************\n");
     }
 }

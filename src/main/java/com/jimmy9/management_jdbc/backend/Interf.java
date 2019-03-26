@@ -23,41 +23,43 @@ public class Interf {
             System.out.print("\n\n>>>");
             String i = input.nextLine();
 
-            if(i.equals("info")){
-                commands.info();
-            }
-            else if(i.equals("help")){
-                commands.help();
-            }
-            else if(i.equals("nc")){
-                commands.createCompany();
-            }
-            else if(i.equals("dc")){
-                commands.deleteCompany();
-            }
-            else if(i.equals("addE")){
-                commands.addEmp();
-            }
-            else if(i.equals("showAll")){
-                commands.showAll();
-            }
-            else if(i.equals("clist")){
-                commands.clist();
-            }
-            else if(i.equals("dw")){
-                commands.deleteW();
-            }
-            else if(i.equals("changeP")){
-                commands.changeP();
-            }
-            else if(i.equals("changeS")){
-                commands.changeS();
-            }
-            else if(i.equals("exit")){
-                session = false;
-            }
-            else{
-                System.out.printf("%nUnknown command \'%s\' enter \'help\' to check list of commands.", i);
+            switch (i){
+                case "info":
+                    commands.info();
+                    break;
+                case "help":
+                    commands.help();
+                    break;
+                case "nc":
+                    commands.createCompany();
+                    break;
+                case "dc":
+                    commands.deleteCompany();
+                    break;
+                case "addE":
+                    commands.addEmp();
+                    break;
+                case "showAll":
+                    commands.showAll();
+                    break;
+                case "clist":
+                    commands.clist();
+                    break;
+                case "dw":
+                    commands.deleteW();
+                    break;
+                case "changeP":
+                    commands.changeP();
+                    break;
+                case "changeS":
+                    commands.changeS();
+                    break;
+                case "exit":
+                    session = false;
+                    break;
+                    default:
+                        System.out.printf("%nUnknown command \'%s\' enter \'help\'" +
+                                " to check list of commands.", i);
             }
         }
     }
