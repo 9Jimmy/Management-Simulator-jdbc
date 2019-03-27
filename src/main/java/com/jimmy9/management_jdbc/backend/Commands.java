@@ -18,7 +18,7 @@ import java.util.Scanner;
 
      private void checkStrField(String f){
          String a = scanner.nextLine();
-         while (a.equals("") || a == null) {
+         while (a.equals("") || a == null || a.length()<1) {
              System.out.println("Can\'t be empty. Try again");
              System.out.print("-> ");
              a = scanner.nextLine();
@@ -152,5 +152,9 @@ import java.util.Scanner;
         "8) changeS - change salary to selected employee\n"                             +
         "9) exit - exit\n"                                                              +
         "********************************************************\n");
+    }
+
+    void exit(){
+         wCommands.exit();
     }
 }

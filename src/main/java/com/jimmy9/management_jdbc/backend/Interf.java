@@ -56,6 +56,7 @@ public class Interf {
                     break;
                 case "exit":
                     session = false;
+                    commands.exit();
                     break;
                     default:
                         System.out.printf("%nUnknown command \'%s\' enter \'help\'" +

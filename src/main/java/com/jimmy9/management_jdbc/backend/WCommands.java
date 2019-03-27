@@ -1,7 +1,6 @@
 package com.jimmy9.management_jdbc.backend;
 
 import java.sql.*;
-import java.util.InputMismatchException;
 
 class WCommands {
 
@@ -165,6 +164,14 @@ class WCommands {
 
         } catch (SQLException e) {
             System.out.println("Can\'t change salary of employee. Try again.");
+        }
+    }
+
+    void exit(){
+        try {
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
