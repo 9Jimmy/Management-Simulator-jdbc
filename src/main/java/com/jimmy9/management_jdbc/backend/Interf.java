@@ -58,6 +58,9 @@ public class Interf {
                     session = false;
                     commands.exit();
                     break;
+                case "ddb":
+                    session = false;
+                    commands.dropDb();
                     default:
                         System.out.printf("%nUnknown command \'%s\' enter \'help\'" +
                                 " to check list of commands.", i);

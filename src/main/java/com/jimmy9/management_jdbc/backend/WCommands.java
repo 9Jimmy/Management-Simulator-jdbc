@@ -109,6 +109,7 @@ class WCommands {
                 employee.setSalary(r.getFloat("salary"));
 
                 System.out.print(employee);
+                System.out.println("-------------------------------------------------------------------------------");
             }
         } catch (SQLException | NullPointerException e) {
             System.out.printf("Can't show list of employees in company %s.%n", company);
@@ -172,6 +173,17 @@ class WCommands {
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    void dropDb(){
+        try{
+            String cm = "DROP database " + dbName;
+            statement.execute(cm);
+            exit();
+            System.out.println("Database deleted successfully.");
+        } catch (SQLException e){
+            System.out.println("Deleting database failed.");
         }
     }
 }

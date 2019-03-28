@@ -151,10 +151,15 @@ import java.util.Scanner;
         "7) changeP - change position to selected employee\n"                           +
         "8) changeS - change salary to selected employee\n"                             +
         "9) exit - exit\n"                                                              +
+        "10) ddb - delete database and exit\n"                                          +
         "********************************************************\n");
     }
 
     void exit(){
          wCommands.exit();
+    }
+
+    void dropDb(){
+         wCommands.dropDb();
     }
 }
