@@ -10,7 +10,7 @@ class WCommands {
     static {
         try {
             connection = DriverManager
-                    .getConnection("jdbc:mysql://localhost/?user=root&password=root");
+                    .getConnection("jdbc:mysql://localhost/?user=root&password=root&useSSL=false");
         } catch (SQLException e) {
             System.out.println("Connection failed.");
         }
