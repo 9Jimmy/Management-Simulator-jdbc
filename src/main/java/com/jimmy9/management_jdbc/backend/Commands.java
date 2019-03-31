@@ -48,7 +48,7 @@ import java.util.Scanner;
         checkStrField("company");
         System.out.print("First name: ");
         checkStrField("fname");
-        System.out.print("Second name: ");
+        System.out.print("Last name: ");
         checkStrField("sname");
         System.out.print("Position: ");
         checkStrField("position");
