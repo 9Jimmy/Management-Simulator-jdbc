@@ -23,42 +23,42 @@ public class Interf {
             System.out.print("\n\n>>>");
             String i = input.nextLine();
 
-            switch (i){
-                case "info":
+            switch (i.toUpperCase()){
+                case "INFO":
                     commands.info();
                     break;
-                case "help":
+                case "HELP":
                     commands.help();
                     break;
-                case "nc":
+                case "NC":
                     commands.createCompany();
                     break;
-                case "dc":
+                case "DC":
                     commands.deleteCompany();
                     break;
-                case "addE":
+                case "ADDE":
                     commands.addEmp();
                     break;
-                case "showAll":
+                case "SHOWALL":
                     commands.showAll();
                     break;
-                case "clist":
+                case "CLIST":
                     commands.clist();
                     break;
-                case "dw":
+                case "DW":
                     commands.deleteW();
                     break;
-                case "changeP":
+                case "CHANGEP":
                     commands.changeP();
                     break;
-                case "changeS":
+                case "CHANGES":
                     commands.changeS();
                     break;
-                case "exit":
+                case "EXIT":
                     session = false;
                     commands.exit();
                     break;
-                case "ddb":
+                case "DDB":
                     session = false;
                     commands.dropDb();
                     default:
